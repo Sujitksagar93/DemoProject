@@ -20,8 +20,6 @@ import com.demoproject.serviceImpl.CustomerServiceImpl;
 
 //import jakarta.validation.Valid;
 
-
-
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
