@@ -1,8 +1,12 @@
 package com.demoproject.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.demoproject.dto.CustomerDto;
@@ -29,6 +33,26 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findAll();
 
 	}
+	
+	@Override
+	public List<Customer> getAllCustomerLists( Integer page , Integer size) {
+
+		Pageable p = PageRequest.of(page, size);
+		
+		Page<Customer> all = customerRepository.findAll(p);
+		List<Customer> content = all.getContent();
+		
+		List<Customer> data = new ArrayList<>();
+		
+		for (Customer customer : content) {
+			
+			data.add(customer);
+		}
+		System.err.println(content);
+		return data;
+
+	}
+	
 
 	@Override
 	public Customer createCustomer(CustomerDto customerDto) {

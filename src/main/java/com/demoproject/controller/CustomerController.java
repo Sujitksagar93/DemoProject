@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demoproject.dto.CustomerDto;
+import com.demoproject.dto.pageDto;
 import com.demoproject.entity.Customer;
 import com.demoproject.response.ResponseHandler;
 import com.demoproject.serviceImpl.CustomerServiceImpl;
@@ -36,14 +37,19 @@ public class CustomerController {
 		response.setStatus(true);
 		response.setData(customer);
 		response.setMessage("sucess");
-//		try {
-//			
-//		} catch (CustomeExceptionMessage e) {
-//			
-//			erro.setStatus(false);
-//			erro.setData(new ArrayList<>());
-//			erro.setMsg(e.getMessage());
-//		}
+
+		return response;
+	}
+	
+	@PostMapping("/listing")
+	public ResponseHandler getAllCustomerLists(@RequestBody pageDto dto)
+	{
+		ResponseHandler response = new ResponseHandler();
+		
+		List<Customer> customer= customerServiceImpl.getAllCustomerLists(dto.getPage(),dto.getSize());
+		response.setStatus(true);
+		response.setData(customer);
+		response.setMessage("sucess");
 		return response;
 	}
 	
