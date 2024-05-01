@@ -18,6 +18,8 @@ public interface CustomerService {
 	public void deleteCustomerById(Integer userId);
 	
 	public Customer updateCustomerDetails(CustomerDto customerDto , Integer userId );
+
+	List<Customer> getAllCustomerLists(Integer page, Integer size);
 	
 	
 	
