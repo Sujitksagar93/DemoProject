@@ -9,7 +9,7 @@ import com.demoproject.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-	boolean existsByEmailId(String emailId);
+	//boolean existsByEmailId(String emailId);
 
 	
 
